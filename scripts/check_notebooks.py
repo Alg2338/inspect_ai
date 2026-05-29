@@ -1,8 +1,12 @@
-"""Static checks
+"""Static checks for the Inspect AI tutorial notebooks.
 
 Usage (from the repo root):
 
     .venv/bin/python scripts/check_notebooks.py [notebook.ipynb ...]
+
+Offline checks: valid .ipynb JSON, code cells compile (placeholder-aware),
+`from inspect_ai... import X` resolves (guards API drift on upgrade),
+section-numbering gaps, committed cell outputs, ruff bug-patterns. No network / secrets.
 
 Exits non-zero on any failure.
 """
