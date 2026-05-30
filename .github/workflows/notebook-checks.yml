@@ -1,0 +1,33 @@
+name: Notebook checks
+
+on:
+  pull_request:
+    branches: [develop, main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: notebook-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  notebooks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: false
+
+      - name: Create environment
+        run: uv venv --python 3.12
+
+      # inspect-ai is installed because the import-resolve check imports it at runtime.
+      - name: Install dependencies
+        run: uv pip install "inspect-ai>=0.3.228,<0.4" nbformat ruff
+
+      - name: Check notebooks
+        run: uv run python scripts/check_notebooks.py

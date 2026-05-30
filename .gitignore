@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Inspect AI eval logs (can be large; don't commit them)
+logs/
+*.eval
+
+# OS
+.DS_Store
