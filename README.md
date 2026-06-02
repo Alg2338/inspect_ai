@@ -7,7 +7,6 @@
 <details>
 <summary>How to save widgets?</summary>
 
-
 When you commit a Jupyter Notebook containing `inspect_ai` progress widgets to GitHub, the interactive components do not display. Instead, some sites, including GitHub, only render a static `Output()` text placeholder.
 
 ## Option 1: Use Jupyter NBViewer (easiest way)
@@ -32,7 +31,6 @@ jupyter nbconvert --to html your_notebook.ipynb
 
 <details>
 <summary>other question?</summary>
-
 
 ...
 </details>
