@@ -5,7 +5,7 @@
 # FAQ
 
 <details>
-<summary>How to save widgets?</summary>
+<summary>How to share notebooks with Inspect widgets (evals() output)?</summary>
 
 When you commit a Jupyter Notebook containing `inspect_ai` progress widgets to GitHub, the interactive components do not display. Instead, some sites, including GitHub, only render a static `Output()` text placeholder.
 
