@@ -30,7 +30,28 @@ jupyter nbconvert --to html your_notebook.ipynb
 </details>
 
 <details>
-<summary>other question?</summary>
+<summary>How to use `multiple_choice()` solver? How to make multiple choice question with CoT?</summary>
 
+The `multiple_choice()` replaces the chain of solvers (and nothing else) - it handles prompting and generation internally. Also, you can only use `choice()` scorer with the `multiple_choice()` solver. So it will look _exactly_ like this:
+
+```mermaid
+flowchart TB
+IS1["Input: Sample"]
+IS2["Solver: multiple_choice()]  # only one solver here"]
+IS3["Scorer: choice()  # only this scorer is allowed here"]
+IS4(("Final Result"))
+
+IS1-->IS2--Model output-->IS3-->IS4
+```
+
+To use the `multiple_choice()` with CoT, use `multiple_choice(cot=True)`. You can also directly change template while NOT using `cot` param, using `template` param. For additional help [check docs](https://inspect.aisi.org.uk/reference/inspect_ai.solver.html#multiple_choice).
+
+DO NOT stack `chain_of_thought()` + `multiple_choice()`.
+</details>
+
+
+<details>
+<summary>other question?</summary>
+<!-- do not delete it before prod-->
 ...
 </details>
