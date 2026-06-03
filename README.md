@@ -30,6 +30,30 @@ jupyter nbconvert --to html your_notebook.ipynb
 </details>
 
 <details>
+<summary>My task was interrupted. What should I do?</summary>
+
+If your run was interrupted, you can continue it if you have defined the task as follows and saved the interim logfile.
+
+```python
+from inspect_ai import eval_retry, task
+
+@task
+def final_task():
+    return Task(
+            dataset=...
+    )
+...
+
+result = eval(...)  # it creates log file when it starts
+
+...
+
+log = eval_retry("logs/your_log_name.eval")[0]
+```
+
+</details>
+
+<details>
 <summary>other question?</summary>
 
 ...
