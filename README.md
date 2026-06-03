@@ -30,6 +30,12 @@ jupyter nbconvert --to html your_notebook.ipynb
 </details>
 
 <details>
+<summary>Why some cells are slow?</summary>    
+
+It takes some time (especially when using local models, e.g. with Ollama) to run the `eval()` function. So don't rerun these cells if it is not necessary. Also, you can use fewer examples via the `eval(limit=1)` param to test your setup.
+</details>
+
+<details>
 <summary>My task was interrupted. What should I do?</summary>
 
 If your run was interrupted, you can continue it if you have defined the task as follows and saved the interim logfile.
