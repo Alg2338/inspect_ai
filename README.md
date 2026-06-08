@@ -41,7 +41,7 @@ It takes some time (especially when using local models, e.g. with Ollama) to run
 If your run was interrupted, you can continue it if you have defined the task as follows and saved the interim logfile.
 
 ```python
-from inspect_ai import eval_retry, task
+from inspect_ai import Task, task, eval, eval_retry
 
 @task
 def final_task():
