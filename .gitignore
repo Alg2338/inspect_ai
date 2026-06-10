@@ -10,6 +10,10 @@ __pycache__/
 venv/
 env/
 
+# Secrets (API keys). Keep the example template tracked.
+.env
+!.env.example
+
 # Inspect AI eval logs (can be large; don't commit them)
 logs/
 *.eval
