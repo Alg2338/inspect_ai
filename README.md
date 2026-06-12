@@ -30,6 +30,36 @@ jupyter nbconvert --to html your_notebook.ipynb
 </details>
 
 <details>
+<summary>Why some cells are slow?</summary>    
+
+It takes some time (especially when using local models, e.g. with Ollama) to run the `eval()` function. So don't rerun these cells if it is not necessary. Also, you can use fewer examples via the `eval(limit=1)` param to test your setup.
+</details>
+
+<details>
+<summary>My task was interrupted. What should I do?</summary>
+
+If your run was interrupted, you can continue it if you have defined the task as follows and saved the interim logfile.
+
+```python
+from inspect_ai import Task, task, eval, eval_retry
+
+@task
+def final_task():
+    return Task(
+            dataset=...
+    )
+...
+
+result = eval(...)  # it creates log file when it starts
+
+...
+
+log = eval_retry("logs/your_log_name.eval")[0]
+```
+
+</details>
+
+<details>
 <summary>How to use `multiple_choice()` solver? How to make multiple choice question with CoT?</summary>
 
 The `multiple_choice()` replaces the chain of solvers (and nothing else) - it handles prompting and generation internally. Also, you can only use `choice()` scorer with the `multiple_choice()` solver. So it will look _exactly_ like this:
