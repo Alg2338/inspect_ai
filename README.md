@@ -36,6 +36,12 @@ It takes some time (especially when using local models, e.g. with Ollama) to run
 </details>
 
 <details>
+<summary>My eval hangs or runs forever. What can I do?</summary>
+
+This usually happens with slow local models or long agent loops. Pass limits to `eval()`: `limit=10` runs only the first few samples, `max_connections=2` caps how many requests run in parallel (lower it for local models), `timeout=120` gives up on a request that has stopped responding, and `message_limit=20` stops runaway agent loops. To bound a sample that never finishes, `time_limit` sets a per-sample wall-clock cap; keep it well above how long one sample should legitimately take, since a slow local model or a long agent run can need several minutes each. Check a stuck run in `inspect view` before rerunning it.
+</details>
+
+<details>
 <summary>My task was interrupted. What should I do?</summary>
 
 If your run was interrupted, you can continue it if you have defined the task as follows and saved the interim logfile.
