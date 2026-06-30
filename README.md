@@ -2,6 +2,135 @@
 
 ...
 
+# Beyond the notebooks
+
+The notebooks cover the core eval loop. A few more building blocks come up on real tasks. Each example below runs in a notebook cell against the default `ollama/llama3.2:3b`.
+
+<details>
+<summary>Custom metric</summary>
+
+A metric reduces per-sample scores to one number. Decorate a function that takes the scores and returns a `Value`.
+
+```python
+from inspect_ai.scorer import metric, Metric, SampleScore, Value
+
+@metric
+def perfect_rate() -> Metric:
+    def compute(scores: list[SampleScore]) -> Value:
+        vals = [s.score.as_float() for s in scores]
+        return sum(1 for v in vals if v == 1.0) / len(vals)
+    return compute
+```
+
+Add it to any scorer with `metrics=[accuracy(), perfect_rate()]`.
+</details>
+
+<details>
+<summary>Custom scorer</summary>
+
+A scorer maps model output to a `Score`. This one accepts a numeric answer within a tolerance.
+
+```python
+from inspect_ai.scorer import scorer, accuracy, stderr, Score, Target, CORRECT, INCORRECT
+from inspect_ai.solver import TaskState
+
+@scorer(metrics=[accuracy(), stderr()])
+def within_tolerance(tol: float = 0.5):
+    async def score(state: TaskState, target: Target) -> Score:
+        num = None
+        for tok in state.output.completion.replace(",", "").split():
+            try:
+                num = float(tok.strip("."))
+            except ValueError:
+                continue
+        ok = num is not None and abs(num - float(target.text)) <= tol
+        return Score(value=CORRECT if ok else INCORRECT, answer=str(num))
+    return score
+```
+</details>
+
+<details>
+<summary>Custom solver</summary>
+
+A solver controls how the model reaches an answer. This one generates, then asks the model to re-check.
+
+```python
+from inspect_ai.solver import solver, TaskState, Generate
+from inspect_ai.model import ChatMessageUser
+
+@solver
+def double_check():
+    async def solve(state: TaskState, generate: Generate) -> TaskState:
+        state = await generate(state)
+        state.messages.append(
+            ChatMessageUser(content="Double-check and reply with only the final number.")
+        )
+        return await generate(state)
+    return solve
+```
+
+Drop it into a `Task` as `solver=double_check()`.
+</details>
+
+<details>
+<summary>Token logprobs</summary>
+
+Request per-token logprobs to read how confident the model was. Providers such as Ollama and OpenAI return them.
+
+```python
+from inspect_ai.model import get_model, GenerateConfig
+
+model = get_model("ollama/llama3.2:3b")
+out = await model.generate(
+    "The capital of France is",
+    config=GenerateConfig(logprobs=True, top_logprobs=5, max_tokens=1),
+)
+for tok in out.choices[0].logprobs.content[0].top_logprobs:
+    print(tok.token, round(tok.logprob, 2))
+# Paris -0.07
+# ...   -3.18
+```
+</details>
+
+<details>
+<summary>Multiple agents</summary>
+
+Run several agents in one flow. A solver agent drafts an answer, then a reviewer agent corrects it.
+
+```python
+from inspect_ai.agent import agent, run, AgentState
+from inspect_ai.model import get_model, ChatMessageUser, ChatMessageSystem
+
+MODEL = "ollama/llama3.2:3b"
+
+@agent
+def solver_agent():
+    async def execute(state: AgentState) -> AgentState:
+        state.messages.insert(0, ChatMessageSystem(content="Solve the problem. Show the final answer."))
+        state.output = await get_model(MODEL).generate(state.messages)
+        state.messages.append(state.output.message)
+        return state
+    return execute
+
+@agent
+def reviewer_agent():
+    async def execute(state: AgentState) -> AgentState:
+        state.messages.append(ChatMessageUser(
+            content="Review the answer above. Reply with only the corrected final number."))
+        state.output = await get_model(MODEL).generate(state.messages)
+        state.messages.append(state.output.message)
+        return state
+    return execute
+
+state = AgentState(messages=[ChatMessageUser(content="What is 12 * (3 + 4)?")])
+state = await run(solver_agent(), state)
+state = await run(reviewer_agent(), state)
+print(state.output.completion)  # 84
+```
+
+For a supervisor that routes to specialist agents, see `handoff()` in the [agents docs](https://inspect.aisi.org.uk/agents.html). Routing needs a tool-capable model, so it runs slowly on small local ones.
+</details>
+
 # FAQ
 
 <details>
