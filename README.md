@@ -1,6 +1,33 @@
 # Inspect AI tutorial
 
-...
+This repository contains Jupyter Notebook tutorial for Inspect AI.
+
+[Inspect AI](https://inspect.aisi.org.uk/) is a widely used library for AI evaluations.
+
+This tutorial covers real-world use cases and essential theory. Every part has its (slightly different) Google Colab version in `colab` branch. You can also ask NotebookLM about tutorials.
+
+Each tutorial comes with assignments for practice.
+
+## How to start
+
+You can clone repository
+
+```
+git clone https://github.com/Alg2338/inspect_ai.git
+```
+
+and open the first notebook.
+
+Or open Google Colab version (see links below).
+
+## Content
+
+| # | Tutorial | Description | Google Colab | 🤖 NotebookLM |
+|---|---|---|---|---|
+| 1 | [inspect_ai_tutorial_1_basics.ipynb](inspect_ai_tutorial_1_basics.ipynb)         | Learn the basics of Inspect AI and create your first evaluation. | <a href="https://colab.research.google.com/github/Alg2338/inspect_ai/blob/colab/inspect_ai_tutorial_1_basics.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" width = '' ></a>     | <a href=""><img src="https://img.shields.io/badge/NotebookLM-open-4285F4?style=for-the-badge&logo=notebookLM" width = ''></a> |
+| 2 | [inspect_ai_tutorial_2_statistics.ipynb](inspect_ai_tutorial_2_statistics.ipynb) | Work with the statistical elements of evaluations.               | <a href="https://colab.research.google.com/github/Alg2338/inspect_ai/blob/colab/inspect_ai_tutorial_2_statistics.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" width = '' ></a> | <a href=""><img src="https://img.shields.io/badge/NotebookLM-open-4285F4?style=for-the-badge&logo=notebookLM" width = ''></a> |
+| 3 | [inspect_ai_tutorial_3_llm_judge.ipynb](inspect_ai_tutorial_3_llm_judge.ipynb)   | Learn how to evaluate using the LLM-as-a-Judge approach.         | <a href="https://colab.research.google.com/github/Alg2338/inspect_ai/blob/colab/inspect_ai_tutorial_3_llm_judge.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" width = '' ></a>  | <a href=""><img src="https://img.shields.io/badge/NotebookLM-open-4285F4?style=for-the-badge&logo=notebookLM" width = ''></a> |
+| 4 | [inspect_ai_tutorial_4_agents.ipynb](inspect_ai_tutorial_4_agents.ipynb)         | Learn how to evaluate autonomous LLM Agents.                     | <a href="https://colab.research.google.com/github/Alg2338/inspect_ai/blob/colab/inspect_ai_tutorial_4_agents.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" width = '' ></a>     | <a href=""><img src="https://img.shields.io/badge/NotebookLM-open-4285F4?style=for-the-badge&logo=notebookLM" width = ''></a> |
 
 # Beyond the notebooks
 
