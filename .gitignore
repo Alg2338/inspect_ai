@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets (API keys). Keep the example template tracked.
+.env
+!.env.example
+
+# Inspect AI eval logs (can be large; don't commit them)
+logs/
+*.eval
+
+# OS
+.DS_Store
