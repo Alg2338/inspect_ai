@@ -4,7 +4,7 @@ This repository contains Jupyter Notebook tutorial for Inspect AI.
 
 [Inspect AI](https://inspect.aisi.org.uk/) is a widely used library for AI evaluations.
 
-This tutorial covers real-world use cases and essential theory. Every part has its (slightly different) Google Colab version in the `colab` branch. You can also ask NotebookLM about tutorials <a href="https://notebooklm.google.com/notebook/4f27e99a-0262-4aef-bb00-85e3bbec331a"><img src="https://img.shields.io/badge/NotebookLM-open-4285F4?style=for-the-badge&logo=notebookLM" width = ''></a>.
+This tutorial covers real-world use cases and essential theory. Every part has its (slightly different) Google Colab version in the `colab` branch. You can also ask NotebookLM about tutorials <a href="https://notebooklm.google.com/notebook/4f27e99a-0262-4aef-bb00-85e3bbec331a"><img src="https://img.shields.io/badge/NotebookLM-open-4285F4?logo=notebookLM"></a>.
 
 Each tutorial comes with assignments for practice.
 
