@@ -4,13 +4,13 @@ This repository contains Jupyter Notebook tutorial for Inspect AI.
 
 [Inspect AI](https://inspect.aisi.org.uk/) is a widely used library for AI evaluations.
 
-This tutorial covers real-world use cases and essential theory. Every part has its (slightly different) Google Colab version in `colab` branch. You can also ask NotebookLM about tutorials.
+This tutorial covers real-world use cases and essential theory. Every part has its (slightly different) Google Colab version in the `colab` branch. You can also ask NotebookLM about tutorials <a href="https://notebooklm.google.com/notebook/4f27e99a-0262-4aef-bb00-85e3bbec331a"><img src="https://img.shields.io/badge/NotebookLM-open-4285F4?style=for-the-badge&logo=notebookLM" width = ''></a>.
 
 Each tutorial comes with assignments for practice.
 
 ## How to start
 
-You can clone repository
+You can clone the repository
 
 ```
 git clone https://github.com/Alg2338/inspect_ai.git
@@ -18,16 +18,16 @@ git clone https://github.com/Alg2338/inspect_ai.git
 
 and open the first notebook.
 
-Or open Google Colab version (see links below).
+Or open the Google Colab version (see links below).
 
 ## Content
 
-| # | Tutorial | Description | Google Colab | 🤖 NotebookLM |
-|---|---|---|---|---|
-| 1 | [inspect_ai_tutorial_1_basics.ipynb](inspect_ai_tutorial_1_basics.ipynb)         | Learn the basics of Inspect AI and create your first evaluation. | <a href="https://colab.research.google.com/github/Alg2338/inspect_ai/blob/colab/inspect_ai_tutorial_1_basics.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" width = '' ></a>     | <a href="https://notebooklm.google.com/notebook/4f27e99a-0262-4aef-bb00-85e3bbec331a"><img src="https://img.shields.io/badge/NotebookLM-open-4285F4?style=for-the-badge&logo=notebookLM" width = ''></a> |
-| 2 | [inspect_ai_tutorial_2_statistics.ipynb](inspect_ai_tutorial_2_statistics.ipynb) | Work with the statistical elements of evaluations.               | <a href="https://colab.research.google.com/github/Alg2338/inspect_ai/blob/colab/inspect_ai_tutorial_2_statistics.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" width = '' ></a> | <a href="https://notebooklm.google.com/notebook/820f2148-7b34-440f-b183-264dcf98cbf7"><img src="https://img.shields.io/badge/NotebookLM-open-4285F4?style=for-the-badge&logo=notebookLM" width = ''></a> |
-| 3 | [inspect_ai_tutorial_3_llm_judge.ipynb](inspect_ai_tutorial_3_llm_judge.ipynb)   | Learn how to evaluate using the LLM-as-a-Judge approach.         | <a href="https://colab.research.google.com/github/Alg2338/inspect_ai/blob/colab/inspect_ai_tutorial_3_llm_judge.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" width = '' ></a>  | <a href="https://notebooklm.google.com/notebook/eb4a7684-1982-4212-801a-41be99589fd0"><img src="https://img.shields.io/badge/NotebookLM-open-4285F4?style=for-the-badge&logo=notebookLM" width = ''></a> |
-| 4 | [inspect_ai_tutorial_4_agents.ipynb](inspect_ai_tutorial_4_agents.ipynb)         | Learn how to evaluate autonomous LLM Agents.                     | <a href="https://colab.research.google.com/github/Alg2338/inspect_ai/blob/colab/inspect_ai_tutorial_4_agents.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" width = '' ></a>     | <a href="https://notebooklm.google.com/notebook/0d2ca918-c336-4b22-8ab6-8bd71b0b682b"><img src="https://img.shields.io/badge/NotebookLM-open-4285F4?style=for-the-badge&logo=notebookLM" width = ''></a> |
+| # | Tutorial | Description | Google Colab |
+|---|---|---|---|
+| 1 | [inspect_ai_tutorial_1_basics.ipynb](inspect_ai_tutorial_1_basics.ipynb)         | Learn the basics of Inspect AI and create your first evaluation. | <a href="https://colab.research.google.com/github/Alg2338/inspect_ai/blob/colab/inspect_ai_tutorial_1_basics.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" width = '' ></a>     |
+| 2 | [inspect_ai_tutorial_2_statistics.ipynb](inspect_ai_tutorial_2_statistics.ipynb) | Work with the statistical elements of evaluations.               | <a href="https://colab.research.google.com/github/Alg2338/inspect_ai/blob/colab/inspect_ai_tutorial_2_statistics.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" width = '' ></a> | 
+| 3 | [inspect_ai_tutorial_3_llm_judge.ipynb](inspect_ai_tutorial_3_llm_judge.ipynb)   | Learn how to evaluate using the LLM-as-a-Judge approach.         | <a href="https://colab.research.google.com/github/Alg2338/inspect_ai/blob/colab/inspect_ai_tutorial_3_llm_judge.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" width = '' ></a>  |
+| 4 | [inspect_ai_tutorial_4_agents.ipynb](inspect_ai_tutorial_4_agents.ipynb)         | Learn how to evaluate autonomous LLM Agents.                     | <a href="https://colab.research.google.com/github/Alg2338/inspect_ai/blob/colab/inspect_ai_tutorial_4_agents.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" width = '' ></a>    |
 
 # Beyond the notebooks
 
@@ -201,7 +201,7 @@ jupyter nbconvert --to html your_notebook.ipynb
 </details>
 
 <details>
-<summary>Why some cells are slow?</summary>    
+<summary>Why are some cells slow?</summary>    
 
 It takes some time (especially when using local models, e.g. with Ollama) to run the `eval()` function. So don't rerun these cells if it is not necessary. Also, you can use fewer examples via the `eval(limit=1)` param to test your setup.
 </details>
