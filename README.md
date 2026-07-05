@@ -237,7 +237,7 @@ log = eval_retry("logs/your_log_name.eval")[0]
 </details>
 
 <details>
-<summary>How to use `multiple_choice()` solver? How to make multiple choice question with CoT?</summary>
+<summary>How to use <tt>multiple_choice()</tt> solver? How to make multiple choice question with CoT?</summary>
 
 The `multiple_choice()` solver formats the multiple-choice prompt and calls `generate()` internally, so do not add a separate `generate()` after it. Pre-solvers such as `system_message()` can still be placed before `multiple_choice()`. Use `choice()` as the scorer.
 
