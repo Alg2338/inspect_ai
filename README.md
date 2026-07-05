@@ -239,11 +239,9 @@ log = eval_retry("logs/your_log_name.eval")[0]
 <details>
 <summary>How to use `multiple_choice()` solver? How to make multiple choice question with CoT?</summary>
 
-The `multiple_choice()` replaces the chain of solvers (and nothing else) - it handles prompting and generation internally. Also, you can only use `choice()` scorer with the `multiple_choice()` solver. So it will look _exactly_ like this:
+The `multiple_choice()` solver formats the multiple-choice prompt and calls `generate()` internally, so do not add a separate `generate()` after it. Pre-solvers such as `system_message()` can still be placed before `multiple_choice()`. Use `choice()` as the scorer.
 
-![Diagram of multiple_choice()](imgs/multiple-choice.png)
-
-To use the `multiple_choice()` with CoT, use `multiple_choice(cot=True)`. You can also directly change template while NOT using `cot` param, using `template` param. For additional help [check docs](https://inspect.aisi.org.uk/reference/inspect_ai.solver.html#multiple_choice).
+For chain-of-thought reasoning, use `multiple_choice(cot=True)` instead of adding `chain_of_thought()`. You can also customize the prompt using the `template` parameter. For additional help, [check the docs](https://inspect.aisi.org.uk/reference/inspect_ai.solver.html#multiple_choice). 
 
 DO NOT stack `chain_of_thought()` + `multiple_choice()`.
 </details>
