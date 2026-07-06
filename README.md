@@ -261,5 +261,5 @@ Tip: Models are prone to forgetting information from the middle of their context
 
 ## Contact us
 
-If you have any questions, comments, ideas, or feedback—including ideas for extending the existing notebooks or creating new ones on this or entirely different topics—feel free to come chat with us on [Discord](https://discord.com/channels/1468568041234239552/1522697375091523808/1522698145585303672), or contact me via [email](mailto:alexgorb2002@gmail.com).
+If you have any questions, comments, ideas, or feedback—including ideas for extending the existing notebooks or creating new ones on this or entirely different topics—feel free to come chat with us on [Discord](https://discord.gg/GPnm8GSCy), or contact me via [email](mailto:alexgorb2002@gmail.com).
 
