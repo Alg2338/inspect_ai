@@ -1,6 +1,6 @@
 # Inspect AI tutorial
 
-<a href=""><img src="https://img.shields.io/badge/discord-Join_us-blue?logo=Discord"></a>
+<a href="https://discord.gg/GPnm8GSCy"><img src="https://img.shields.io/badge/discord-Join_us-blue?logo=Discord"></a>
 <a href="mailto:alexgorb2002@gmail.com"><img src="https://img.shields.io/badge/alexgorb2002@gmail.com-D14836?logo=gmail"></a>
 
 This repository contains Jupyter Notebook tutorial for Inspect AI.
