@@ -244,7 +244,7 @@ log = eval_retry("logs/your_log_name.eval")[0]
 
 The `multiple_choice()` solver formats the multiple-choice prompt and calls `generate()` internally, so do not add a separate `generate()` after it. Pre-solvers such as `system_message()` can still be placed before `multiple_choice()`. Use `choice()` as the scorer.
 
-For chain-of-thought reasoning, use `multiple_choice(cot=True)` instead of adding `chain_of_thought()`. You can also customize the prompt using the `template` parameter. For additional help, [check the docs](https://inspect.aisi.org.uk/reference/inspect_ai.solver.html#multiple_choice). 
+You can also customize the prompt using the `template` parameter. For additional help, [check the docs](https://inspect.aisi.org.uk/reference/inspect_ai.solver.html#multiple_choice). 
 
 DO NOT stack `chain_of_thought()` + `multiple_choice()`.
 </details>
