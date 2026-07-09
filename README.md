@@ -250,6 +250,13 @@ DO NOT stack `chain_of_thought()` + `multiple_choice()`.
 </details>
 
 <details>
+<summary>When to use <tt>chain_of_thought()</tt> solver?</summary>
+
+Inspect's `chain_of_thought()` solver explicitly prompts the model to reason step by step. You may test it as a separate elicitation condition for **base models**, but using it with post-trained or reasoning models is an antipattern (use `system_message()` or `prompt_template` for custom instructions).
+
+</details>
+
+<details>
 <summary>How do agents use resource? Do they only use the last message?</summary>
 
 Agents use a lot of resources: each message, each tool call result, and each scaffold message is in the context window. The context window cannot be infinitely long: LLMs by design are constrained by a fixed context window size.
