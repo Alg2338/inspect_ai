@@ -240,19 +240,17 @@ log = eval_retry("logs/your_log_name.eval")[0]
 </details>
 
 <details>
-<summary>How to use <tt>multiple_choice()</tt> solver? How to make multiple choice question with CoT?</summary>
+<summary>How to use <tt>multiple_choice()</tt> solver?</summary>
 
 The `multiple_choice()` solver formats the multiple-choice prompt and calls `generate()` internally, so do not add a separate `generate()` after it. Pre-solvers such as `system_message()` can still be placed before `multiple_choice()`. Use `choice()` as the scorer.
 
 You can also customize the prompt using the `template` parameter. For additional help, [check the docs](https://inspect.aisi.org.uk/reference/inspect_ai.solver.html#multiple_choice). 
-
-DO NOT stack `chain_of_thought()` + `multiple_choice()`.
 </details>
 
 <details>
 <summary>When to use <tt>chain_of_thought()</tt> solver?</summary>
 
-Inspect's `chain_of_thought()` solver explicitly prompts the model to reason step by step. You may test it as a separate elicitation condition for **base models**, but using it with post-trained or reasoning models is an antipattern (use `system_message()` or `prompt_template` for custom instructions).
+Inspect's `chain_of_thought()` solver explicitly prompts the model to reason step by step. You may test it as a separate elicitation condition for **base models**, but using it with post-trained or reasoning models is an antipattern.
 
 </details>
 
