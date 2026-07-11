@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import ast
 import importlib
+import os
 import re
 import subprocess
 import sys
@@ -47,6 +48,10 @@ HEADING_NUM_RE = re.compile(r"^(#{1,6})\s+(\d+(?:\.\d+)*)\.?\s*(.*?)$", re.MULTI
 
 # Only inspect_ai imports are verified; third-party imports aren't our concern.
 RESOLVABLE_PREFIXES = ("inspect_ai",)
+
+COLAB_BRANCH = "colab"
+COLAB_ACCELERATOR = "GPU"
+COLAB_GPU_TYPE = "T4"
 
 
 @dataclass
@@ -215,6 +220,45 @@ def check_no_outputs(nb_path: Path, nb, result: Result) -> None:
                    severity="warning")
 
 
+def current_git_branch() -> str | None:
+    try:
+        proc = subprocess.run(
+            ["git", "branch", "--show-current"],
+            capture_output=True, text=True, timeout=5, check=False,
+        )
+    except Exception:
+        return None
+    branch = proc.stdout.strip()
+    return branch or None
+
+
+def is_colab_branch() -> bool:
+    return (
+        os.environ.get("GITHUB_BASE_REF") == COLAB_BRANCH
+        or os.environ.get("GITHUB_REF_NAME") == COLAB_BRANCH
+        or current_git_branch() == COLAB_BRANCH
+    )
+
+
+def check_colab_gpu_metadata(nb_path: Path, nb, result: Result) -> None:
+    metadata = nb.get("metadata", {})
+    colab_metadata = metadata.get("colab", {})
+    accelerator = metadata.get("accelerator")
+    gpu_type = colab_metadata.get("gpuType") if isinstance(colab_metadata, dict) else None
+    if accelerator != COLAB_ACCELERATOR:
+        result.add(
+            nb_path,
+            "metadata.accelerator",
+            f"expected {COLAB_ACCELERATOR!r}, got {accelerator!r}",
+        )
+    if gpu_type != COLAB_GPU_TYPE:
+        result.add(
+            nb_path,
+            "metadata.colab.gpuType",
+            f"expected {COLAB_GPU_TYPE!r}, got {gpu_type!r}",
+        )
+
+
 # Real-bug rules only (bad %-format, syntax, mutable defaults). F401 is dropped
 # too: imports provided for `# YOUR CODE HERE` cells look unused (false positives).
 RUFF_RULE_SELECT = "F501,F502,F503,F504,F505,F506,F507,F901,E9,B006,B008"
@@ -272,6 +316,8 @@ def check_notebook(nb_path: Path) -> Result:
     nb = check_jsonformat(nb_path, result)
     if nb is None:
         return result
+    if is_colab_branch():
+        check_colab_gpu_metadata(nb_path, nb, result)
     check_cells_compile(nb_path, nb, result)
     check_imports_resolve(nb_path, nb, result)
     check_numbering(nb_path, nb, result)
