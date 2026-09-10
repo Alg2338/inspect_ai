@@ -1,6 +1,6 @@
 # Inspect AI tutorial
 
-<a href="https://discord.gg/GPnm8GSCy"><img src="https://img.shields.io/badge/discord-Join_us-blue?logo=Discord"></a>
+<a href="https://discord.gg/xdFw32jcv3"><img src="https://img.shields.io/badge/discord-Join_us-blue?logo=Discord"></a>
 <a href="mailto:alexgorb2002@gmail.com"><img src="https://img.shields.io/badge/gmail-Email_us-D14836?logo=gmail"></a>
 
 This repository contains Jupyter Notebook tutorial for Inspect AI.
@@ -269,5 +269,5 @@ Tip: Models are prone to forgetting information from the middle of their context
 
 ## Contact us
 
-If you have any questions, comments, ideas, or feedback—including ideas for extending the existing notebooks or creating new ones on this or entirely different topics—feel free to come chat with us on [Discord](https://discord.gg/GPnm8GSCy), or contact me via [email](mailto:alexgorb2002@gmail.com).
+If you have any questions, comments, ideas, or feedback—including ideas for extending the existing notebooks or creating new ones on this or entirely different topics—feel free to come chat with us on [Discord](https://discord.gg/xdFw32jcv3), or contact me via [email](mailto:alexgorb2002@gmail.com).
 
